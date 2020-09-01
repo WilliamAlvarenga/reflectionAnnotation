@@ -1,0 +1,52 @@
+package reflectionAnnotation;
+
+import java.math.BigDecimal;
+
+public class Product {
+
+	private String name;
+	@PropertyName("portrayal")
+	private String description;
+	@PropertyName("$")
+	private BigDecimal price;
+	@Ignore
+	private String category;
+	
+	public Product() {
+		super();
+	}
+	
+	public Product(String name, String description, BigDecimal price, String category) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.category = category;
+	}
+	public String getNome() {
+		return name;
+	}
+	public void setNome(String nome) {
+		this.name = nome;
+	}
+	public String getDescricao() {
+		return description;
+	}
+	public void setDescricao(String descricao) {
+		this.description = descricao;
+	}
+	public BigDecimal getValor() {
+		return valor;
+	}
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
+	}
+	public String getCategoria() {
+		return category;
+	}
+	public void setCategoria(String categoria) {
+		this.category = categoria;
+	}
+	
+	
+}

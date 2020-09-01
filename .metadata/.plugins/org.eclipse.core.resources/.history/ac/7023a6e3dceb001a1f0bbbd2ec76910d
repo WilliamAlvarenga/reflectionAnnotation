@@ -1,0 +1,13 @@
+package reflectionAnnotation;
+
+import java.util.Map;
+
+public class MapGenerate {
+
+	public static Map<String,Object> buildMap(Object o) {
+	
+		
+		return null;
+		
+	}
+}

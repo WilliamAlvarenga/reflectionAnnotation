@@ -1,0 +1,5 @@
+package reflectionAnnotation;
+
+public interface PropertyName {
+
+}

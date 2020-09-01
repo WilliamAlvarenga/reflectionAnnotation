@@ -1,0 +1,24 @@
+package reflectionAnnotation;
+
+import java.math.BigDecimal;
+import java.util.Map;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Product p = new Product("Design Patterns","Publicado pela Casa do Codigo",BigDecimal.valueOf(59.90),
+				"LIVRO");
+		
+		System.out.print(p.getCategoria());
+				Map<String,Object> props = MapGenerate.buildMap(p);
+				for(String prop : props.keySet()){
+				System.out.println(prop+" = "+props.get(prop));
+				}
+
+		
+		
+	}
+
+}
