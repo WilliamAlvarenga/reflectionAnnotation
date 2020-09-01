@@ -1,5 +1,0 @@
-package reflectionAnnotation;
-
-public interface Ignore {
-
-}
