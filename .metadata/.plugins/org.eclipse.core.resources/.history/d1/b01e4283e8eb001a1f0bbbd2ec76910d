@@ -11,8 +11,10 @@ public class Main {
 		Product p = new Product("Design Patterns", "Todo dev deve saber!", BigDecimal.valueOf(59.90), "LIVRO");		
 		
 		Map<String, Object> props = MapGenerate.buildMap(p);
+		for (String prop : props.keySet()) {
+			System.out.println(prop + " = " + props.get(prop));
+		}
 		
-		props.forEach((k,v) -> 	System.out.println(k + " = " + v));	
 		
 	}
 

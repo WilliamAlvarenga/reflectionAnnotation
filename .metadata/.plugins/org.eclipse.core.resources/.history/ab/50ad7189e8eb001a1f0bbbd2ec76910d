@@ -12,7 +12,10 @@ public class Main {
 		
 		Map<String, Object> props = MapGenerate.buildMap(p);
 		
-		props.forEach((k,v) -> 	System.out.println(k + " = " + v));	
+		props.forEach((k,v) -> 	System.out.println(k + " = " + v));
+		
+	
+		
 		
 	}
 
