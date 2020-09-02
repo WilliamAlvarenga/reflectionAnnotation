@@ -58,5 +58,6 @@ public class MapGenerate {
 		response.append(getterName.substring(4));
 		return response.toString();
 	}
-
+	
+	
 }
