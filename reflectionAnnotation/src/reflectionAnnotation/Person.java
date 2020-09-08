@@ -1,12 +1,12 @@
 package reflectionAnnotation;
-
+@ParseClass(value=Product.class )
 public class Person {
 
 	@Parse(value ="description")
 	private String firtName;
 	@Parse(value="category")
 	private String LastName;
-	@Parse(value="name")
+//	@Parse(value="name") tst
 	private Integer age;
 	
 	public Person() {

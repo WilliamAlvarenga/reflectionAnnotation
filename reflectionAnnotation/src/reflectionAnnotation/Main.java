@@ -18,8 +18,16 @@ public class Main {
 
 		product = (Product) SetterParse.setterObjt(product, person);
 
-		System.out.print(product.getCategory());
-
+		System.out.print("########### \n");
+		
+		System.out.print(product.getCategory() + "\n");
+		
+		
+		System.out.print("########### \n");
+		
+		Product newProd = (Product) SetterParse.setterObjt(person);
+		
+		System.out.print(newProd.getDescription());
 	}
 
 }

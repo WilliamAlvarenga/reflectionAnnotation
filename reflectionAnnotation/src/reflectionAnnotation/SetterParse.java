@@ -6,6 +6,9 @@ public class SetterParse {
 
 	public static Object setterObjt(Object to, Object by) {
 
+		try {
+			
+		
 		Class<?> toCls = to.getClass();
 		Class<?> byCls = by.getClass();
 
@@ -18,10 +21,12 @@ public class SetterParse {
 					field.setAccessible(true);
 					fieldTmp.setAccessible(true);
 
-					if (field.getType().equals(fieldTmp.getType())) {
-
-						fieldTmp.set(to, field.get(by));
+					if (!field.getType().equals(fieldTmp.getType())) {					
+						
+						throw new Exception("Type of field different: " +field.getType()+ " to " + fieldTmp.getType() );
 					}
+					
+					fieldTmp.set(to, field.get(by));
 
 				} catch (Exception e) {
 					System.out.print("Erro: " + e.getMessage());
@@ -33,6 +38,33 @@ public class SetterParse {
 
 		return to;
 
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
+		
+		return null;
+	}
+	
+	public static Object setterObjt( Object by) {
+		
+		try {
+
+			Class<?> clazzBy = by.getClass();
+
+			Class<?> clazzTo = clazzBy.getAnnotation(ParseClass.class).value();
+
+			if (null == clazzTo) {
+				throw new Exception("Class Not Found");
+			}		
+
+			return setterObjt(clazzTo.newInstance(), by );
+
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
+
+		return null;
+		
 	}
 
 }
