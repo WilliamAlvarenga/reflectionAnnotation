@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 
 public class SetterParse {
 
-	public static Object setterObjt(Object to, Object by) {
+	public static Object setterObjt(Object to, Object by) throws Exception{
 
 		try {
 			
@@ -45,7 +45,7 @@ public class SetterParse {
 		return null;
 	}
 	
-	public static Object setterObjt( Object by) {
+	public static Object setterObjt( Object by)throws Exception {
 		
 		try {
 
@@ -59,9 +59,16 @@ public class SetterParse {
 
 			return setterObjt(clazzTo.newInstance(), by );
 
-		} catch (Exception e) {
+		} catch (InstantiationException e) {
+			System.out.print(e.getMessage());
+			System.out.print("Error: Empty Constructor required! ");			
+		}catch (IllegalAccessException e) {			
+			System.out.print(e.getMessage());
+			System.out.print("Error: public Constructor required! ");
+		}catch(Exception e) {			
 			System.out.print(e.getMessage());
 		}
+		// InstantiationException -> construtor nao encontrado / IllegalAccessException -> construtor privado .
 
 		return null;
 		
