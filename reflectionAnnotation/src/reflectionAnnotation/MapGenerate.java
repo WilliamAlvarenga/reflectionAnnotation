@@ -49,9 +49,13 @@ public class MapGenerate {
 			   m.getParameterTypes().length == 0 &&
 			   !m.isAnnotationPresent(Ignore.class);
 	}
-	
+	/**
+	 * Remove Get from method
+	 * @param getterName
+	 * @return field 
+	 */
 	private static String getterToProperty(String getterName) {
-		//remove o Get na frente da propriedade ex: getNome
+	
 		
 		StringBuffer response = new StringBuffer();
 		response.append(getterName.substring(3, 4).toLowerCase());

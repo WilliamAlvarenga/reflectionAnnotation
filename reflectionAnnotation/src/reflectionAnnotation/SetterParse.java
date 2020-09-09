@@ -4,74 +4,77 @@ import java.lang.reflect.Field;
 
 public class SetterParse {
 
-	public static Object setterObjt(Object to, Object by) throws Exception{
+	public static Object setterObjt(Object by, Object to) throws Exception{
 
 		try {
-			
-		
-		Class<?> toCls = to.getClass();
-		Class<?> byCls = by.getClass();
+			Class<?> toCls = to.getClass();
+			Class<?> byCls = by.getClass();
 
-		for (Field field : byCls.getDeclaredFields()) {
+			for (Field field : byCls.getDeclaredFields()) {
 
-			if (field.isAnnotationPresent(Parse.class)) {
-				try {
-					Field fieldTmp = toCls.getDeclaredField(field.getAnnotation(Parse.class).value());
+				if (field.isAnnotationPresent(Parse.class)) {
+					try {
+						Field fieldTmp = toCls.getDeclaredField(field.getAnnotation(Parse.class).value());
 
-					field.setAccessible(true);
-					fieldTmp.setAccessible(true);
+						field.setAccessible(true);
+						fieldTmp.setAccessible(true);
 
-					if (!field.getType().equals(fieldTmp.getType())) {					
-						
-						throw new Exception("Type of field different: " +field.getType()+ " to " + fieldTmp.getType() );
+						if (!field.getType().equals(fieldTmp.getType())) {
+
+							throw new Exception(
+									"Type of field different: " + field.getType() + " to " + fieldTmp.getType());
+						}
+
+						fieldTmp.set(to, field.get(by));
+
+					} catch (Exception e) {
+						System.out.print("Erro: " + e.getMessage());
 					}
-					
-					fieldTmp.set(to, field.get(by));
 
-				} catch (Exception e) {
-					System.out.print("Erro: " + e.getMessage());
 				}
 
 			}
 
-		}
-
-		return to;
+			return to;
 
 		} catch (Exception e) {
 			System.out.print(e.getMessage());
 		}
-		
+
 		return null;
 	}
 	
-	public static Object setterObjt( Object by)throws Exception {
-		
-		try {
+	public static Object setterObjt(Object by) throws Exception {
 
+		try {
 			Class<?> clazzBy = by.getClass();
 
 			Class<?> clazzTo = clazzBy.getAnnotation(ParseClass.class).value();
 
 			if (null == clazzTo) {
 				throw new Exception("Class Not Found");
-			}		
+			}
 
-			return setterObjt(clazzTo.newInstance(), by );
+			return setterObjt(by, clazzTo.newInstance());
 
 		} catch (InstantiationException e) {
 			System.out.print(e.getMessage());
-			System.out.print("Error: Empty Constructor required! ");			
-		}catch (IllegalAccessException e) {			
+			System.out.print("Error: Empty Constructor required! ");
+			throw new InternalError(" Empty Constructor required! ");
+
+		} catch (IllegalAccessException e) {
 			System.out.print(e.getMessage());
 			System.out.print("Error: public Constructor required! ");
-		}catch(Exception e) {			
+			throw new InternalError("Public Constructor required!");
+
+		} catch (Exception e) {
 			System.out.print(e.getMessage());
 		}
-		// InstantiationException -> construtor nao encontrado / IllegalAccessException -> construtor privado .
+		// InstantiationException -> construtor nao encontrado / IllegalAccessException
+		// -> construtor privado .
 
 		return null;
-		
+
 	}
 
 }

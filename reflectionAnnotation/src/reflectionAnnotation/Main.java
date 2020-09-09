@@ -18,7 +18,7 @@ public class Main {
 
 			props.forEach((k, v) -> System.out.println(k + " = " + v));
 
-			product = (Product) SetterParse.setterObjt(product, person);
+			product = (Product) SetterParse.setterObjt(person, product);
 
 			System.out.print("########### \n");
 
