@@ -56,20 +56,26 @@ public class CommandImplement {
 		Field[] field = EModules.class.getFields();
 
 		for (Field f : field) {
-			if (f.isAnnotationPresent(Module.class) &&
-				f.getAnnotation(Module.class).value().equalsIgnoreCase(module)) {
+			if (f.isAnnotationPresent(Module.class)) {
 
-				return EModules.valueOf(f.getName());
+				if (f.getAnnotation(Module.class).value().equalsIgnoreCase(module)) {
 
+					return EModules.valueOf(f.getName());
+				}
+
+			} else {
+				Optional<EModules> tempMod = findModuleByEmoduleValue(module);				
+				if (tempMod.isPresent()) {
+					return tempMod.get();
+				}
 			}
 		}
 
 		return null;
 
 	}
-	
-	@SuppressWarnings("unused")
-	@Deprecated
+
+
 	private Optional<EModules> findModuleByEmoduleValue(String module) {
 		
 		return modules.stream().filter(mod -> mod.toString().equalsIgnoreCase(module)).findAny();
