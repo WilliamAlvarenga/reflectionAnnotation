@@ -1,6 +1,6 @@
 package reflectionDP;
 
-@Module("singer")
+
 public class Singer implements ICommand {
 
 	@Override

@@ -2,7 +2,9 @@ package reflectionDP;
 
 public enum EModules {
 	
+	@Module("singerMod")
 	SINGER (new Singer().run()),
+	@Module("registerMod")
 	REGISTER(new Register().run());
 
 	private String _className;

@@ -1,5 +1,6 @@
 package reflectionDP;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
@@ -19,14 +20,14 @@ public class CommandImplement {
 		
 		String[] tempParam = params.split(" ");
 		
-		Optional<EModules> module = findModule(tempParam[0]);
+		EModules module = findModuleByAnnotation(tempParam[0]);
 				
-		if(!module.isPresent()) {
-			System.out.print("\n Modulo nao encontrado!!");
+		if(null == module) {
+			System.out.print("\n Modulo nao encontrado!! \n");
 			return;
 		}
 		
-		invokeCommand(module.get().getClassName(), tempParam[1]);
+		invokeCommand(module.getClassName(), tempParam[1]);
 		
 	}
 
@@ -34,14 +35,14 @@ public class CommandImplement {
 		
 		if(params.containsKey("command") && params.containsKey("module")) {
 			
-			Optional<EModules> module = findModule(params.get("module"));
+			EModules module = findModuleByAnnotation(params.get("module"));
 			
-			if(!module.isPresent()) {
-				System.out.print("\n Modulo nao encontrado!!" );
+			if(null == module) {
+				System.out.print("\n Modulo nao encontrado!! \n" );
 				return;
 			}
 			
-			invokeCommand(module.get().getClassName(), params.get("command"));
+			invokeCommand(module.getClassName(), params.get("command"));
 			return;
 		}
 		
@@ -50,12 +51,28 @@ public class CommandImplement {
 		
 	}
 
-	private Optional<EModules> findModule(String tempParam) {	
+	private EModules findModuleByAnnotation(String module) {
+
+		Field[] field = EModules.class.getFields();
+
+		for (Field f : field) {
+			if (f.isAnnotationPresent(Module.class) &&
+				f.getAnnotation(Module.class).value().equalsIgnoreCase(module)) {
+
+				return EModules.valueOf(f.getName());
+
+			}
+		}
+
+		return null;
+
+	}
+	
+	@SuppressWarnings("unused")
+	@Deprecated
+	private Optional<EModules> findModuleByEmoduleValue(String module) {
 		
-		return modules.stream()
-					  .filter(module-> module.toString().equalsIgnoreCase(tempParam))
-					  .findAny();
-					  
+		return modules.stream().filter(mod -> mod.toString().equalsIgnoreCase(module)).findAny();
 	}
 	
 	private void invokeCommand(String module, String command) {

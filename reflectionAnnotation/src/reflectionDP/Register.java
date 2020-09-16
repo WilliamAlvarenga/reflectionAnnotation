@@ -1,6 +1,6 @@
 package reflectionDP;
 
-@Module("register")
+
 public class Register  implements ICommand{
 
 	@Override

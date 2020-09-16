@@ -14,7 +14,7 @@ public class Main {
 		implement.setCommand(paramsString);
 		
 		
-		String paramsStringError = "singerfff talk";
+		String paramsStringError = "singerMod talk";
 		
 		implement.setCommand(paramsStringError);
 		
@@ -36,7 +36,7 @@ public class Main {
 		
 		Map<String, String> paramsMapError = new HashMap<String,String>();
 		
-		paramsMapError.put("module", "registerfdfdf");
+		paramsMapError.put("module", "registerMod");
 		paramsMapError.put("command", "printSomething");
 		
 		implement.setCommand(paramsMapError);
