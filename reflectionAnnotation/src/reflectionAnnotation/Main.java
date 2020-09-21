@@ -3,6 +3,9 @@ package reflectionAnnotation;
 import java.math.BigDecimal;
 import java.util.Map;
 
+import reflectionAnnotation.model.Person;
+import reflectionAnnotation.model.Product;
+
 public class Main {
 
 	public static void main(String[] args) {

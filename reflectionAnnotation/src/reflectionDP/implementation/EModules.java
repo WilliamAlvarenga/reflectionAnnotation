@@ -1,4 +1,8 @@
-package reflectionDP;
+package reflectionDP.implementation;
+
+import reflectionDP.annotation.Module;
+import reflectionDP.model.Register;
+import reflectionDP.model.Singer;
 
 public enum EModules {
 	

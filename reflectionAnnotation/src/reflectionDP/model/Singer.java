@@ -1,5 +1,7 @@
-package reflectionDP;
+package reflectionDP.model;
 
+import reflectionDP.annotation.Command;
+import reflectionDP.interfaces.ICommand;
 
 public class Singer implements ICommand {
 

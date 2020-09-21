@@ -1,4 +1,4 @@
-package reflectionDP;
+package reflectionDP.implementation;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -6,6 +6,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
+import reflectionDP.annotation.Command;
+import reflectionDP.annotation.Module;
 
 public class CommandImplement {
 

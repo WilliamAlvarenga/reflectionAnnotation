@@ -2,6 +2,9 @@ package reflectionAnnotation;
 
 import java.lang.reflect.Field;
 
+import reflectionAnnotation.annotation.Parse;
+import reflectionAnnotation.annotation.ParseClass;
+
 public class SetterParse {
 
 	public static Object setterObjt(Object by, Object to) throws Exception{

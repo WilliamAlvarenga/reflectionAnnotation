@@ -1,4 +1,8 @@
-package reflectionAnnotation;
+package reflectionAnnotation.model;
+
+import reflectionAnnotation.annotation.Parse;
+import reflectionAnnotation.annotation.ParseClass;
+
 @ParseClass(value=Product.class )
 public class Person {
 

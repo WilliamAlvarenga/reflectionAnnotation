@@ -4,6 +4,9 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
+import reflectionAnnotation.annotation.Ignore;
+import reflectionAnnotation.annotation.PropertyName;
+
 public class MapGenerate {
 
 	public static Map<String,Object> buildMap(Object o) {

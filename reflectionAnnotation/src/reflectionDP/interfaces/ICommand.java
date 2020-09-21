@@ -1,4 +1,4 @@
-package reflectionDP;
+package reflectionDP.interfaces;
 
 public interface ICommand {
 

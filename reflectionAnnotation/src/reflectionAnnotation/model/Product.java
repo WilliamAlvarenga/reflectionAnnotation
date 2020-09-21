@@ -1,6 +1,9 @@
-package reflectionAnnotation;
+package reflectionAnnotation.model;
 
 import java.math.BigDecimal;
+
+import reflectionAnnotation.annotation.Ignore;
+import reflectionAnnotation.annotation.PropertyName;
 
 public class Product {
 
